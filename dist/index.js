@@ -27903,11 +27903,7 @@ async function registerRunnerCmd() {
   cmdArgs.push(`--url`, (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("gitlab-instance"));
   cmdArgs.push(`--token`, (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("token"));
   cmdArgs.push(`--name`, (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("name"));
-  cmdArgs.push(`--tag-list`, (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("tag-list"));
   cmdArgs.push(`--docker-privileged`, true);
-  cmdArgs.push(`--locked="false"`);
-  cmdArgs.push(`--access-level="${(0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("access-level")}"`);
-  cmdArgs.push(`--run-untagged="${(0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("run-untagged")}"`);
 
   await (0,_actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec)("docker run", cmdArgs);
 }

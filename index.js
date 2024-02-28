@@ -14,11 +14,7 @@ async function registerRunnerCmd() {
   cmdArgs.push(`--url`, getInput("gitlab-instance"));
   cmdArgs.push(`--token`, getInput("token"));
   cmdArgs.push(`--name`, getInput("name"));
-  cmdArgs.push(`--tag-list`, getInput("tag-list"));
   cmdArgs.push(`--docker-privileged`, true);
-  cmdArgs.push(`--locked="false"`);
-  cmdArgs.push(`--access-level="${getInput("access-level")}"`);
-  cmdArgs.push(`--run-untagged="${getInput("run-untagged")}"`);
 
   await exec("docker run", cmdArgs);
 }

@@ -15,9 +15,6 @@ inputs:
   name:
     description: 'Runner name'
     required: true
-  tag-list:
-    description: 'Tag list to bind with the runner'
-    required: true
   docker-image:
     description: 'Docker image used by runner'
     required: false
