@@ -5,6 +5,10 @@ branding:
   icon: 'server'
   color: 'purple'
 inputs:
+  job-count:
+    description: 'Number of jobs that should be runner'
+    required: false
+    default: '1'
   gitlab-instance:
     description: 'Gitlab instance'
     required: true

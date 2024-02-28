@@ -5,6 +5,7 @@ This action allow you have a gitlab runner up to ~60gb
 
 | Input Name | Description | Required | Enum Values | Default Value |
 |-----------------|-------------|---------------|---------------|---------------|
+| `job-count` | Number of jobs to run | No | N/A | 1 |
 | `gitlab-instance` | Gitlab instance | No | N/A | https://gitlab.com/ |
 | `registration-token` | Registration token | Yes | N/A | N/A |
 | `name` | Runner name | Yes | N/A | N/A |
@@ -33,7 +34,7 @@ jobs:
           remove-haskell: 'true'
 
       - name: Gitlab Runner
-        uses: edersonbrilhante/gitlab-runner-action@main
+        uses: torbenraab/gitlab-runner-action@main
         with:
           registration-token: "${{ github.event.client_payload.registration_token }}"
           docker-image: "docker:19.03.12"
