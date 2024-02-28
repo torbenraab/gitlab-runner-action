@@ -3,6 +3,7 @@
 jobs=$1
 success_count=0
 previous_log=""
+previous_job_id=""
 
 echo "Jobs to run: $jobs"
 
@@ -21,10 +22,11 @@ while (( success_count < jobs )); do
         echo "Job failed"
         exit 1
     fi
-    new_successes=$(echo "$log" | grep -o "Job succeeded" | wc -l)
-    ((success_count+=new_successes))
-    if (( new_successes > 0 )); then
-        echo "Jobs completed: $success_count"
+    current_job_id=$(echo "$log" | grep -o "job=[0-9]*" | cut -d= -f2)
+    if [ "$current_job_id" != "$previous_job_id" ]; then
+        new_successes=$(echo "$log" | grep -o "Job succeeded" | wc -l)
+        ((success_count+=new_successes))
+        previous_job_id="$current_job_id"
     fi
 done
 
