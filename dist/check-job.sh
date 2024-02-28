@@ -7,7 +7,7 @@ previous_log=""
 echo "Jobs to run: $jobs"
 
 while (( success_count < jobs )); do
-    log=$(docker logs gitlab-runner --since 1s 2>&1 | grep -v "gitlab-runner" | grep -v "Checking status of gitlab-runner" | grep -v "Checking for jobs...")
+    log=$(docker logs gitlab-runner --since 1s 2>&1 | grep -v "gitlab-runner" | grep -v "Checking status of gitlab-runner" | grep -v "Checking for jobs..." | grep -v "Appending trace to coordinator")
     if [ "$log" = "$previous_log" ]; then
         continue
     fi
