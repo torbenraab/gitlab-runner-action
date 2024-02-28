@@ -27940,7 +27940,9 @@ async function stopRunnerCmd() {
 }
 
 async function checkJob() {
-  await (0,_actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec)(`${(0,path__WEBPACK_IMPORTED_MODULE_2__.resolve)(__dirname, "dist")}/check-job.sh ${(0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("job-count")}`);
+  const jobCount = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("job-count");
+  const dirname = __dirname.includes("dist") ? __dirname : (0,path__WEBPACK_IMPORTED_MODULE_2__.resolve)(__dirname, "dist");
+  await (0,_actions_exec__WEBPACK_IMPORTED_MODULE_1__.exec)(`${dirname}/check-job.sh ${jobCount}`);
 }
 
 async function registerRunner() {

@@ -51,7 +51,9 @@ async function stopRunnerCmd() {
 }
 
 async function checkJob() {
-  await exec(`${resolve(__dirname, "dist")}/check-job.sh ${getInput("job-count")}`);
+  const jobCount = getInput("job-count");
+  const dirname = __dirname.includes("dist") ? __dirname : resolve(__dirname, "dist");
+  await exec(`${dirname}/check-job.sh ${jobCount}`);
 }
 
 async function registerRunner() {
