@@ -9,8 +9,13 @@ while (( success_count < jobs )); do
     echo "Runner failed to process"
     exit 1
   fi
+  if echo "$log" | grep -q "Job failed"; then
+    echo "Job failed"
+    exit 1
+  fi
   new_successes=$(echo "$log" | grep -o "Job succeeded" | wc -l)
   ((success_count+=new_successes))
+  echo "Jobs completed: $success_count"
 done
 
 echo "All $jobs jobs succeeded"
