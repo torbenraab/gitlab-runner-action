@@ -1,12 +1,16 @@
 name: GitLab Runner Service
-description: 'Runs a gitlab runner'
-author: 'Ederson Brilhante'
+description: 'Runs a gitlab runner using the token authentication method'
+author: 'Torben Raab'
 branding:
   icon: 'server'
   color: 'purple'
 inputs:
-  registration-token:
-    description: 'Registration token'
+  gitlab-instance:
+    description: 'Gitlab instance'
+    required: true
+    default: 'https://gitlab.com/'
+  token:
+    description: 'Token'
     required: true
   name:
     description: 'Runner name'
@@ -17,7 +21,7 @@ inputs:
   docker-image:
     description: 'Docker image used by runner'
     required: false
-    default: 'docker:19.03.12'
+    default: 'docker:25'
   run-untagged:
     description: "Parameter that allows or not to pick untagged jobs"
     required: false
@@ -27,5 +31,5 @@ inputs:
     required: false
     default: "not_protected"
 runs:
-  using: 'node12'
+  using: 'node20'
   main: 'dist/index.js'

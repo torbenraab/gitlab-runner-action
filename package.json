@@ -1,14 +1,21 @@
 {
   "name": "gitlab-runner-action",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Runs a gitlab runner",
   "main": "index.js",
+  "contributors": [
+    {
+      "name": "Torben Raab",
+      "email": "torben.raab@lila-it.de"
+    }
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build index.js -o dist --license licenses.txt"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edersonbrilhante/gitlab-runner-action.git"
+    "url": "git+https://github.com/torbenraab/gitlab-runner-action.git"
   },
   "keywords": [],
   "author": {
@@ -17,12 +24,14 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/edersonbrilhante/gitlab-runner-action/issues"
+    "url": "https://github.com/torbenraab/gitlab-runner-action/issues"
   },
-  "homepage": "https://github.com/edersonbrilhante/gitlab-runner-action#readme",
+  "homepage": "https://github.com/torbenraab/gitlab-runner-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.6",
-    "@actions/exec": "^1.0.4"
+    "@actions/core": "^1.10.1",
+    "@actions/exec": "^1.1.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.1"
+  }
 }
