@@ -18,13 +18,13 @@ while (( success_count < jobs )); do
         exit 1
     fi
     if echo "$log" | grep -q "Job failed"; then
-        echo "Job failed"
+        echo "Job failed: $success_count / $jobs"
         exit 1
     fi
-    new_successes=$(echo "$log" | grep -o "Job succeeded" | wc -l)
+    new_successes=$(echo "$log" | grep -o "Removed job from processing list" | wc -l)
     ((success_count+=new_successes))
     if (( new_successes > 0 )); then
-        echo "Jobs completed: $success_count"
+        echo "Jobs completed: $success_count / $jobs"
     fi
 done
 
